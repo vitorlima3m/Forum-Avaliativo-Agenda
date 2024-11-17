@@ -7,6 +7,7 @@ from . import models
 
 class ContactForm(forms.ModelForm):
     picture = forms.ImageField(
+        required=False,
         widget=forms.FileInput(
             attrs={'acept':'image/*',}
         )
@@ -19,7 +20,6 @@ class ContactForm(forms.ModelForm):
             }
         ),
         label='Primeiro Nome',
-        help_text='Texto de ajuda para seu usuário',
     )
        
     class Meta:

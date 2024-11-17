@@ -4,6 +4,7 @@ from contact.models import Contact
 from django.core.paginator import Paginator
 from contact.forms import ContactForm
 from django.urls import reverse
+from django.contrib import messages
 
 def create (request):
     form_action = reverse('contact:create')
@@ -17,7 +18,8 @@ def create (request):
         
         if form.is_valid():
             contact=form.save()
-            return redirect('contact:update',contact_id=contact.id)
+            messages.success(request, 'Contato Cadastrado com Sucesso.')
+            return redirect('contact:contact',contact_id=contact.id)
  
         return render(
             request,
@@ -49,7 +51,8 @@ def update (request, contact_id):
         
         if form.is_valid():
             contact=form.save()
-            return redirect('contact:update',contact_id=contact.pk)
+            messages.success(request, 'Dados Atualizados')
+            return redirect('contact:contact',contact_id=contact.pk)
  
         return render(
             request,
@@ -74,6 +77,7 @@ def delete (request, contact_id):
     
     if confirmation == 'yes':
         contact.delete()
+        messages.warning(request, 'Contato deletado')
         return redirect('contact:index')
     
     return render(
