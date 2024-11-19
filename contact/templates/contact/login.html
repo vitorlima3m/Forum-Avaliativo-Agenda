@@ -5,12 +5,11 @@
 
     <h2>Login</h2>
     {% if user.is_authenticated %}
-      <p>
-        Você está logado com o usuário {{user.username}}
-      </p>
+    <div class="contact-login">
+      <p class="login-message">Seja bem vindo <span class="username">{{user.username}}</span>, oque deseja fazer ?</p> 
+    </div>   
       <div class="user-buttons">
-        <a href="{% url "contact:user_update" %} class="update-buttom"">Atualizar</a>
-        <a href="{% url "contact:logout" %} class="delete-buttom"">Deletar</a>
+        <a href="{% url "contact:user_update" %}" class="update-buttom btn table-link">Atualizar perfil</a>
       </div>
     {% else %}
     {% include "contact/partials/_user-form.html" %}

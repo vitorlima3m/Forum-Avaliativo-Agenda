@@ -17,13 +17,14 @@ class Contact(models.Model):
     phone = models.CharField(max_length=50)
     email = models.EmailField(max_length=254, blank=True)
     create_date = models.DateTimeField(default=timezone.now)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, verbose_name='Descrição')
     show = models.BooleanField(default=True)
     picture = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
     category = models.ForeignKey(
         Category, 
         on_delete=models.SET_NULL,
-        blank=True, null=True
+        blank=True, null=True,
+        verbose_name='Categoria'
     )
     owner = models.ForeignKey(
         User, 

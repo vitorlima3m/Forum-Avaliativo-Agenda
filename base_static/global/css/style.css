@@ -345,3 +345,18 @@
   .btn-delete-confirm{
     background: red;
   }
+
+  .user-buttons{
+    margin-top: 1.5rem;
+    display: block;
+  }
+
+  .login-message{
+    font-size: 2rem;
+  }
+
+  .username{
+    text-transform: uppercase;
+    color: black;
+    font-weight: bolder;
+  }

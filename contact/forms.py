@@ -17,12 +17,42 @@ class ContactForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'class': 'classe-a classe-b',
-                'placeholder': 'Aqui veio do init',
+                'placeholder': 'Digite o nome do contato',
             }
         ),
-        label='Primeiro Nome',
+        label='Nome',
     )
-       
+    
+    last_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'classe-a classe-b',
+                'placeholder': 'Digite o sobrenome do contato',
+            }
+        ),
+        label='Sobrenome',
+    )
+    
+    phone = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'classe-a classe-b',
+                'placeholder': 'Digite um telefone',
+            }
+        ),
+        label='Telefone',
+    )
+    
+    email = forms.EmailField(
+            widget=forms.TextInput(
+                attrs={
+                    'class': 'classe-a classe-b',
+                    'placeholder': 'Digite um e-mail',
+                }
+            ),
+            label='E-mail',
+        )
+  
     class Meta:
         model = models.Contact
         fields = (
@@ -63,13 +93,16 @@ class RegisterForm(UserCreationForm):
     first_name = forms.CharField(
         required=True,
         min_length=3,
+        label='Nome',
     )
     last_name = forms.CharField(
         required=True,
         min_length=3,
+        label='Sobrenome',
     )
     email = forms.EmailField(
         required=True,
+        label='E-mail',
     )
     class Meta:
         model =  User
@@ -92,7 +125,8 @@ class RegisterUpdateForm(forms.ModelForm):
             min_length=2,
             max_length=30,
             required=True,
-            help_text='Required.',
+            help_text='Campo obrigatório.',
+            label='Nome',
             error_messages={
                 'min_length': 'Por favor adicione pelo menos 02 caracteres'
             }
@@ -101,11 +135,12 @@ class RegisterUpdateForm(forms.ModelForm):
             min_length=2,
             max_length=30,
             required=True,
-            help_text='Required.'
+            help_text='Campo obrigatório.',
+            label='Sobrenome',
         )
 
         password1 = forms.CharField(
-            label="Password",
+            label="Senha",
             strip=False,
             widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
             help_text=password_validation.password_validators_help_text_html(),
@@ -113,7 +148,7 @@ class RegisterUpdateForm(forms.ModelForm):
         )
 
         password2 = forms.CharField(
-            label="Password 2",
+            label="Confirmação de senha",
             strip=False,
             widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
             help_text='Use a mesma senha de antes',
