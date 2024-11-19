@@ -150,7 +150,7 @@
   .table-header {
     padding: var(--spacing);
   }
-  
+
   .table-link {
     color: var(--link-dark-color);
     transition: color var(--transition-fast) ease-in-out;

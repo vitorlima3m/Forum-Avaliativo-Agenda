@@ -7,8 +7,11 @@
     {% if user.is_authenticated %}
       <p>
         Você está logado com o usuário {{user.username}}
-        clique <a href="{% url "contact:logout" %}">aqui</a> para sair.
       </p>
+      <div class="user-buttons">
+        <a href="{% url "contact:user_update" %} class="update-buttom"">Atualizar</a>
+        <a href="{% url "contact:logout" %} class="delete-buttom"">Deletar</a>
+      </div>
     {% else %}
     {% include "contact/partials/_user-form.html" %}
     {% endif %}

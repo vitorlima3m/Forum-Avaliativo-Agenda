@@ -4,12 +4,24 @@
  </h1> 
  <nav class="menu">
      <ul class="menu-list">
+        {% if user.is_authenticated %}
          <li class="menu-item">
              <a href="{% url "contact:create" %}" class="menu-link">Adicionar Contato</a>
          </li>
          <li class="menu-item">
-             <a href="" class="menu-link">Link</a>
-         </li>
+            <a href="{% url "contact:login" %}" class="menu-link">Perfil</a>
+        </li>
+        <li class="menu-item">
+            <a href="{% url "contact:logout" %}" class="menu-link">Deslogar</a>
+        </li>
+        {% else %}
+        <li class="menu-item">
+            <a href="{% url "contact:login" %}" class="menu-link">Login</a>
+        </li>
+        <li class="menu-item">
+            <a href="{% url "contact:register" %}" class="menu-link">Cadastrar</a>
+        </li>
+        {% endif %}
      </ul>
  </nav>
 

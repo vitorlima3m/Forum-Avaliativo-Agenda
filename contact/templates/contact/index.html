@@ -2,53 +2,55 @@
 
 {% block content %}
 {% if page_obj %}
-  <div class="responsive-table">
-    <table class="contacts-table">
-        <caption class="table-caption">
-            Contatos
-        </caption>
+    <div class="responsive-table">
+        <table class="contacts-table">
+            <caption class="table-caption">
+                Contatos
+            </caption>
 
-        <thead>
-            <tr class="table-row table-row-header">
-                <th class="table-header">ID</th>
-                <th class="table-header">Nome</th>
-                <th class="table-header">Sobrenome</th>
-                <th class="table-header">Telefone</th>
-                <th class="table-header">E-mail</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            {% for contact in page_obj %}
-                <tr class="table-row">
-                    <td class="table-cel">
-                        <a href="{% url "contact:contact" contact.id %}" class="table-linik">
-                            {{contact.id}}
-                        </a>
-                    </td>
-                    <td class="table-cel">
-                        {{contact.first_name}}
-                    </td>
-                    <td class="table-cel">
-                        {{contact.last_name}}
-                    </td>
-                    <td class="table-cel">
-                        {{contact.phone}}
-                    </td>
-                    <td class="table-cel">
-                        {{contact.email}}
-                    </td>
+            <thead>
+                <tr class="table-row table-row-header">
+                    <th class="table-header">ID</th>
+                    <th class="table-header">Nome</th>
+                    <th class="table-header">Sobrenome</th>
+                    <th class="table-header">Telefone</th>
+                    <th class="table-header">E-mail</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-  </div>
-{% else %}
-    <div class="single-contact">
-        <h1 class="single-contact-name">
-            O contato <span class="span-not-found">{{request.GET.q.strip}}</span> não foi encontrado.
-        </h1>
+            </thead>
+
+            <tbody>
+                {% for contact in page_obj %}
+                    <tr class="table-row">
+                        <td class="table-cel">
+                            <a href="{% url "contact:contact" contact.id %}" class="table-link">
+                                {{contact.id}}
+                            </a>
+                        </td>
+                        <td class="table-cel">
+                            <a href="{% url "contact:contact" contact.id %}" class="table-link">
+                                {{contact.first_name}}
+                            </a>
+                        </td>
+                        <td class="table-cel">
+                            {{contact.last_name}}
+                        </td>
+                        <td class="table-cel">
+                            {{contact.phone}}
+                        </td>
+                        <td class="table-cel">
+                            {{contact.email}}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+    {% else %}
+        <div class="single-contact">
+            <h1 class="single-contact-name">
+                O contato <span class="span-not-found">{{request.GET.q.strip}}</span> não foi encontrado.
+            </h1>
+        </div>
 {% endif %}
 {% endblock content %}
 
