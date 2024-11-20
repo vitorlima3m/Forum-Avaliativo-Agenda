@@ -24,10 +24,11 @@
         {% endif %}
      </ul>
  </nav>
-
+ {% if user.is_authenticated %}
  <div class="search">
      <form action="{% url "contact:search" %}" method="GET">
          <input type="text" class="search-input" placeholder="Pesquisa" id="search" name="q" value="{{request.GET.q.strip}}">
      </form>
  </div>
+ {% endif %}
  </header>

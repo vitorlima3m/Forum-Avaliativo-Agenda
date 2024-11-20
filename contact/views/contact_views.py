@@ -44,7 +44,7 @@ def search (request):
         return redirect('contact:index')
     
     contacts= Contact.objects.all()\
-        .filter(show=True)\
+        .filter(show=True, owner=request.user)\
         .filter(
             Q(first_name__icontains=search_value) |
             Q(last_name__icontains=search_value) |

@@ -27,7 +27,11 @@
 
       <div class="form-content">
         <div class="form-group">
-          <button class="btn" type="submit">Enviar</button>
+          {% if user.is_authenticated %}
+          <button class="btn" type="submit">Atualizar</button>
+          {% else %}
+          <button class="btn" type="submit">Logar</button>
+          {% endif %}
         </div>
       </div>
 
